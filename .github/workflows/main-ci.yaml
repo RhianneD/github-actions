@@ -32,7 +32,7 @@ jobs:
         continue-on-error: false
 
       - name: Upload Test Results
-        uses: actions/upload-artifact@v2  # Upload test results as an artifact.
+        uses: actions/upload-artifact@v4  # Upload test results as an artifact.
         with:
           name: test-results
           path: build/test-logs/
