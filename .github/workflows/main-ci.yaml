@@ -16,8 +16,23 @@ jobs:
           java-version: '17'   # Use JDK version 17
           distribution: 'adopt'  # Specify the JDK distribution
 
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
       - name: Build with Gradle
-        run: ./gradlew clean build   # Run Gradle build.
+        run: ./gradlew build --no-daemon  # Run Gradle build.
 
       - name: Run Tests
-        run: ./gradlew test  # Run the tests defined in your project.
+        run: ./gradlew test --no-daemon  # Run Gradle tests and print test names.
+        continue-on-error: false
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v2  # Upload test results as an artifact.
+        with:
+          name: test-results
+          path: build/test-logs/
