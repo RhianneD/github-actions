@@ -1,0 +1,23 @@
+name: main-ci
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest   # Choose the runner (GitHub-hosted Ubuntu).
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # This action checks out your code from GitHub.
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2  # Setup JDK 17 for the job.
+        with:
+          java-version: '17'   # Use JDK version 17
+          distribution: 'adopt'  # Specify the JDK distribution
+
+      - name: Build with Gradle
+        run: ./gradlew clean build   # Run Gradle build.
+
+#      - name: Run Tests
+#        run: ./gradlew test  # Run the tests defined in your project.
