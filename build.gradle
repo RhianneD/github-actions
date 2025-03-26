@@ -26,3 +26,12 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+test {
+    // Show test names in the console log
+    testLogging {
+        events "passed", "skipped", "failed"
+        showStandardStreams = true
+    }
+}
+
