@@ -28,10 +28,13 @@ tasks.named('test') {
 }
 
 test {
+    reports {
+        junitXml.required = true
+        html.required = true  // Generates an HTML test report
+    }
     // Show test names in the console log
     testLogging {
         events "passed", "skipped", "failed"
         showStandardStreams = true
     }
 }
-
