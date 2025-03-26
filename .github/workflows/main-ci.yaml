@@ -34,18 +34,18 @@ jobs:
       - name: Upload Test Results
         uses: actions/upload-artifact@v4  # Upload test results as an artifact.
         with:
-          name: test-results
+          name: github-pages
           path: build/reports/tests/test # This is where the HTML report is
 
   deploy:
-    needs: test  # This job runs after tests complete
+    needs: build  # This job runs after tests complete
     permissions:
       pages: write
       id-token: write
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
 
   release:
     runs-on: ubuntu-latest
