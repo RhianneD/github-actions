@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v4  # Upload test results as an artifact.
         with:
           name: test-results
-          path: build/test-logs/
+          path: build/reports/tests/test
   release:
     runs-on: ubuntu-latest
     needs: build
