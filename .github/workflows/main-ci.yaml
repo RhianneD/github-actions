@@ -36,3 +36,4 @@ jobs:
         with:
           name: test-results
           path: build/test-logs/
+          download: true  # Specify the download input
