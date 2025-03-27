@@ -53,7 +53,7 @@ jobs:
         uses: actions/deploy-pages@v4
       - name: Add Deployment URL to Summary
         run: |
-          echo "Test reports generated: [ Click here ](${{ steps.deployment.outputs.page_url }})" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ Test reports generated: [Click here](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/)" >> $GITHUB_STEP_SUMMARY
 
   release:
     runs-on: ubuntu-latest
